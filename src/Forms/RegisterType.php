@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+//Clase registro-->Estructura formulario
 class RegisterType extends AbstractType{
 	
 	public function buildForm(FormBuilderInterface $builder, array $options){

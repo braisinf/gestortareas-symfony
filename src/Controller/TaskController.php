@@ -12,7 +12,8 @@ class TaskController extends AbstractController
      * @Route("/task", name="task")
      */
     public function index()
-    {
+    {   
+        /*
         //PRUEBA RELACIONES
         //Entity Manager
         $em = $this->getDoctrine()->getManager();
@@ -24,6 +25,7 @@ class TaskController extends AbstractController
         foreach($tasks as $task){
             echo $task->getUser()->getName();
         }
+        */
         return $this->render('task/index.html.twig', [
             'controller_name' => 'TaskController',
         ]);
