@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
 
 /**
  * Tasks
@@ -60,7 +60,9 @@ class Task
      * @var \User
      *
      * RELACIONES (apuntan a entidad, no a tabla bd)
-     * @ORM\ManyToOne(targetEntity="User")
+     * targetEntity-->Indica la entidad con la que establece la relación
+     * inversedBy-->Indica que se va a relacionar con la propiedad tasks de la entidad User
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tasks")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })

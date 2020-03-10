@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+//Importar colecciones
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Users
@@ -62,6 +65,25 @@ class User
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
+
+
+
+    /**Anotaciones relación user->task
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user")
+     */
+    //Relación user con task
+    private $tasks;
+
+    public function __construct(){
+        $this->tasks = new ArrayCollection();
+    }
+
+    /*
+    @return Collection|Task[]
+    */
+    public function getTasks(): Collection{
+        return $this->tasks;
+    }
 
     public function getId(): ?int
     {
