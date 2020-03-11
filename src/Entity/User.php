@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 //Importar colecciones
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
@@ -13,7 +14,8 @@ use Doctrine\Common\Collections\Collection;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User
+/*Implementar userInterface para poder trabajar con la autentificación y la seguridad*/ 
+class User implements UserInterface
 {
     /**
      * @var int
@@ -84,6 +86,29 @@ class User
     public function getTasks(): Collection{
         return $this->tasks;
     }
+
+      //@override
+      public function getUsername()
+      {
+          return $this->email;
+      }
+
+      //@override
+      public function getSalt()
+      {
+          return null;
+      }
+
+      //@override
+      public function getRoles()
+      {
+          return array('ROLE_USER');
+      }
+
+      //@override
+      public function eraseCredentials(){}
+
+
 
     public function getId(): ?int
     {
@@ -161,6 +186,9 @@ class User
 
         return $this;
     }
+
+  
+
 
 
 }

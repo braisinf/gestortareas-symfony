@@ -16,7 +16,7 @@ class UserController extends AbstractController
    /**
      * @Route("/user/register", name="register")
      */
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
 		// Crear formulario asociado a objeto user
 		$user = new User();
@@ -30,17 +30,17 @@ class UserController extends AbstractController
 			// Modificando el objeto para guardarlo
 			$user->setRole('ROLE_USER');
 			$user->setCreatedAt(new \Datetime('now'));
-			
-			// Cifrar contraseña 
-			$hash = password_hash($user->getPassword(), PASSWORD_BCRYPT, ['cost' => 12]);
-            //Setear contraseña cifrada
-            $user->setPassword($hash);
+			//Encriptar y guardar contraseña utilizando encoders definidos en config/packages/security.yaml
+			//NECESARIO IMPLEMENTAR interface UserInterface en entidad User
+			$encoded = $encoder->encodePassword($user,$user->getPassword());
+			$user->setPassword($encoded);
+		
 			
 			// Guardar usuario
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($user);
             $em->flush();
-
+			
             // Redirección a task index
 			return $this->redirectToRoute('task');
             
