@@ -3,9 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <!--Hojas de estilos-->
+            <link href="{{ asset('assets/css/style.css') }}" type="text/css" rel="stylesheet"/>
+        {% endblock %}
     </head>
     <body>
+        {%block header%}
+        <h1>Tareas Symfony</h1>
+            <ul>
+                <li><a href="{{ path('task') }}">Inicio</a></li>
+                <li><a href="">Mis Tareas</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="{{ path('register') }}">Registro</a></li>
+            </ul>
+        {%endblock%}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

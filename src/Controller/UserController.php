@@ -25,7 +25,7 @@ class UserController extends AbstractController
 		// Rellenar el objeto con los datos del form
 		$form->handleRequest($request);
 		
-		// Comprobar si el form se ha enviado y si es válido
+		// Comprobar si el form se ha enviado y validarlo
 		if($form->isSubmitted() && $form->isValid()){
 			// Modificando el objeto para guardarlo
 			$user->setRole('ROLE_USER');

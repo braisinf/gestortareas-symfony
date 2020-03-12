@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-//Importar colecciones
+//Colecciones
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
+//Validaciones
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Users
@@ -37,6 +39,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $name;
 
@@ -44,6 +48,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $surname;
 
@@ -51,6 +57,10 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+	 * @Assert\NotBlank
+	 * @Assert\Email(
+	 *		message = "El email '{{ value }}' no es valido"
+	 * )
      */
     private $email;
 
@@ -58,6 +68,7 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $password;
 
@@ -175,12 +186,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt($createdAt): self
     {
         $this->createdAt = $createdAt;
 

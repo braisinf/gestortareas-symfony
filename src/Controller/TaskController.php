@@ -9,7 +9,7 @@ use App\Entity\Task;
 class TaskController extends AbstractController
 {
     /**
-     * @Route("/task", name="task")
+     * @Route("/", name="task")
      */
     public function index()
     {   
