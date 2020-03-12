@@ -31,3 +31,33 @@ input[type="submit"]{
     padding: 15px;
     margin-top: 15px;
 }
+
+#header{
+    margin: 1em auto; 
+    max-width: 800px; 
+    width: 95%; 
+    font: 18px/1.5 sans-serif; 
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+#menu{
+    list-style: none;
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    height: 50px;
+    background: #eee;
+    line-height: 50px;
+}
+
+#menu li{
+    float: left;
+    display: block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
