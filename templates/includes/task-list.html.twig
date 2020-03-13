@@ -1,0 +1,44 @@
+  <table>
+        <tr>
+            <th>Tarea</th>
+            <th>Prioridad</th>
+            <th>Horas Presupuestadas</th>
+            <th>Acciones</th>
+        </tr>
+    <!--Verificación usuario autentificado para listar tareas-->
+    {% if app.user %}
+        <!--Listado tareas según prioridad-->
+        {% for task in tasks %}
+            <tr>
+            {% if task.priority == "alta" %}
+                <td style="background: Coral">{{task.title}}</td>
+                <td style="background: Coral">{{task.priority}}</td>
+                <td style="background: Coral">{{task.hours}}</td>
+                <td style="background: khaki"class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% elseif task.priority == "media" %}
+                <td style="background: CornflowerBlue">{{task.title}}</td>
+                <td style="background: CornflowerBlue">{{task.priority}}</td>
+                <td style="background: CornflowerBlue">{{task.hours}}</td>
+                <td style="background: khaki" class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% elseif task.priority == "baja" %}
+                <td style="background: Aquamarine">{{task.title}}</td>
+                <td style="background: Aquamarine">{{task.priority}}</td>
+                <td style="background: Aquamarine">{{task.hours}}</td>
+                <td style="background: khaki" class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
