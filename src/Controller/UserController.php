@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class UserController extends AbstractController
 {
    /**
-     * @Route("/user/register", name="register")
+     * @Route("/registro", name="register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -50,6 +50,19 @@ class UserController extends AbstractController
 			'form' => $form->createView()
         ]);
     }
-	
+
+	//@param utilidades de autentificación
+	/**
+     * @Route("/login", name="login")
+     */
+	public function login(AuthenticationUtils $authenticationUtils){
+		$error = $authenticationUtils->getLastAuthenticationError();
+		$lastUserName = $authenticationUtils->getLastUsername();
+
+		return $this->render('user/login.html.twig', array(
+			'error' => $error,
+			'lastUserName' => $lastUserName
+		));
+	}
 }
 

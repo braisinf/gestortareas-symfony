@@ -1,3 +1,9 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+#Funcionalidad ya implementada en el framework
+logout:
+    path: /logout
+  
