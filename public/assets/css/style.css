@@ -66,3 +66,41 @@ input[type="submit"]{
     margin-left: 15px;
     margin-right: 15px;
 }
+
+table th{
+    width: 100%;
+    padding: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border-bottom: 1px solid grey;
+    background: khaki;
+
+}
+
+table td{
+    font-size: medium;
+    width: 100%;
+    padding: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    text-align: center;
+
+}
+
+.buttons a{
+    font-size: large;
+    text-decoration: none;
+    padding: 2px;
+}
+
+.btnEliminar{
+    background: Coral;
+}
+
+.btnVer{
+    background: CornFlowerBlue;
+}
+
+.btnEditar{
+    background: Aquamarine;
+}

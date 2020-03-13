@@ -11,14 +11,15 @@
     <body>
         {%block header%}
         <div id="header">
-            <h2>Gestor de Tareas</h2>
+            <h1>Gestor de Tareas</h1>
                 <div id="menu">
                     <ul>
                         <li><a href="{{ path('task') }}">Inicio</a></li>
                         <li><a href="">Mis Tareas</a></li>
                         <!--Verificación user autenticado-->
                         {% if app.user %}
-                            <li><a href="{{ path('logout') }}">Cerrar Sesión</a></li>
+                            <li style="float: right"><a href="{{ path('logout') }}">Cerrar Sesión</a></li>
+                            <li style="float: right">{{app.user.name}}  {{ app.user.surname }}</li>
                         {% else %}
                             <li><a href="{{ path('login') }}">Login</a></li>
                             <li><a href="{{ path('register') }}">Registro</a></li>

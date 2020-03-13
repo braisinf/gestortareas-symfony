@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TaskController!{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,49 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2>Todas las tareas✅</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp3.1.9/www/gestortareas-symphony/src/Controller/TaskController.php'|file_link(0) }}">src/Controller/TaskController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp3.1.9/www/gestortareas-symphony/templates/task/index.html.twig'|file_link(0) }}">templates/task/index.html.twig</a></code></li>
-    </ul>
+    <table>
+        <tr>
+            <th>Tarea</th>
+            <th>Prioridad</th>
+            <th>Horas Presupuestadas</th>
+            <th>Acciones</th>
+        </tr>
+
+        <!--Listado tareas según prioridad-->
+        {% for task in tasks %}
+            <tr>
+            {% if task.priority == "alta" %}
+                <td style="background: Coral">{{task.title}}</td>
+                <td style="background: Coral">{{task.priority}}</td>
+                <td style="background: Coral">{{task.hours}}</td>
+                <td style="background: khaki"class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% elseif task.priority == "media" %}
+                <td style="background: CornflowerBlue">{{task.title}}</td>
+                <td style="background: CornflowerBlue">{{task.priority}}</td>
+                <td style="background: CornflowerBlue">{{task.hours}}</td>
+                <td style="background: khaki" class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% elseif task.priority == "baja" %}
+                <td style="background: Aquamarine">{{task.title}}</td>
+                <td style="background: Aquamarine">{{task.priority}}</td>
+                <td style="background: Aquamarine">{{task.hours}}</td>
+                <td style="background: khaki" class="buttons">
+                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
+                    <a class="btnEliminar" href="">Eliminar</a>
+                </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

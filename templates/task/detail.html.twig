@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<!--Visualización detalle tarea-->
+<div class="example-wrapper">
+<!--Cambio color de fondo tarea según prioridad-->
+{% if task.priority == "alta" %}
+    <div style="background:Coral">
+        <h2>{{task.title}}</h2>
+        <h3>Descripción</h3>
+        <p>{{task.content}}</p>
+        <p class"data-task">
+            {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
+        </p>
+    </div>
+{% elseif task.priority == "media" %}
+    <div style="background:CornFlowerBlue">
+        <h2>{{task.title}}</h2>
+        <h3>Descripción</h3>
+        <p>{{task.content}}</p>
+        <p class"data-task">
+            {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
+        </p>
+    </div>
+{% elseif task.priority == "baja" %}
+    <div style="background:Aquamarine">
+        <h2>{{task.title}}</h2>
+        <h3>Descripción</h3>
+        <p>{{task.content}}</p>
+        <p class"data-task">
+            {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
+        </p>
+    </div>
+{% endif %}
+</div>
+{% endblock %}
