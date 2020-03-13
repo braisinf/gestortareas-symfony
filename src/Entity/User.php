@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-//Colecciones
+namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-//Validaciones
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -80,24 +79,25 @@ class User implements UserInterface
     private $createdAt;
 
 
-
-    /**Anotaciones relación user->task
-     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user")
-     */
-    //Relación user con task
-    private $tasks;
-
-    public function __construct(){
-        $this->tasks = new ArrayCollection();
+    //Relación Users->Task
+    /**
+	 * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user")
+	 */
+	private $tasks;
+	
+	public function __construct(){
+		$this->tasks = new ArrayCollection();
     }
+    
 
-    /*
-    @return Collection|Task[]
-    */
-    public function getTasks(): Collection{
-        return $this->tasks;
+    /**
+	 * @return Collection|Task[]
+	 */
+	public function getTasks(): Collection
+	{
+		return $this->tasks;
     }
-
+    
       //@override
       public function getUsername()
       {
