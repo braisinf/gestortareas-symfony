@@ -88,6 +88,11 @@ class User implements UserInterface
 	public function __construct(){
 		$this->tasks = new ArrayCollection();
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     
 
     /**
@@ -118,13 +123,6 @@ class User implements UserInterface
 
       //@override
       public function eraseCredentials(){}
-
-
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getRole(): ?string
     {

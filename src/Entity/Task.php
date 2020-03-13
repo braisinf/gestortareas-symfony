@@ -57,11 +57,11 @@ class Task
      */
     private $createdAt;
 
+   
+    //RELACIONES (apuntan a entidad, no a tabla bd)
+    // targetEntity-->Indica la entidad con la que establece la relación
     /**
      * @var \User
-     *
-     * RELACIONES (apuntan a entidad, no a tabla bd)
-     * targetEntity-->Indica la entidad con la que establece la relación
      * inversedBy-->Indica que se va a relacionar con la propiedad tasks de la entidad User
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tasks")
      * @ORM\JoinColumns({
@@ -69,11 +69,18 @@ class Task
      * })
      */
     private $user;
-
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    //@return user Relacionado Con la tarea
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+   
 
     public function getTitle(): ?string
     {
@@ -135,10 +142,7 @@ class Task
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
+    
 
     public function setUser(?User $user): self
     {

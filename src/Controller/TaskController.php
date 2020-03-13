@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Task;
 use App\Forms\TaskType;
+use App\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class TaskController extends AbstractController
@@ -86,10 +87,43 @@ class TaskController extends AbstractController
             return $this->redirect($this->generateUrl('detail',['id'=>$task->getId()]));
         }
 
-        return $this->render('task/create_task.html.twig',[
+        return $this->render('task/create&edit_task.html.twig',[
+            'edit' => false,
             'form' => $form->createView()
         ]);
 
+    }
+
+     /**
+       * @param=Request formulario modificar tarea, Objeto user autenticado
+       * @return=Form Create&edit Task edit=true
+     * @Route("/task/update/{id}", name="update_task")
+     */ 
+    public function update(Request $request, Task $task, UserInterface $user){
+        //Verificación existencia Usuario y user propietario tarea 
+        if($user && $user->getId()==$task->getUser()->getId()){
+            //Crear formulario asociado al objeto task, al asociarlo, ya se rellenan los campos del formulario automáticamente
+            //Con los valores del objeto $task recibido por parámetro
+            $form = $this->createForm(TaskType::class, $task);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                //Guardar tarea
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($task);
+                $em->flush();
+
+                // Redirección a detalle tarea modificada
+                return $this->redirect($this->generateUrl('detail',['id'=>$task->getId()]));
+            }
+
+            return $this->render('task/create&edit_task.html.twig',[
+                'edit' => true,
+                'form' => $form->createView()
+            ]);
+        }else{
+            // Redirección a task index
+			return $this->redirectToRoute('task');
+        }
     }
 
     

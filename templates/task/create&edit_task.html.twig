@@ -4,7 +4,12 @@
 
 {% block body %}
 <div class="example-wrapper">
-    <h2>Crear Tarea</h2>
+    <!--Visualización Creación Tarea o Modificación según valor de edit-->
+    {% if edit %}
+        <h2>Modificar Tarea</h2>
+    {% else %}
+       <h2>Crear Tarea</h2>
+    {% endif %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}

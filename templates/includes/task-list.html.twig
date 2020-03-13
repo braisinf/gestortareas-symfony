@@ -15,7 +15,7 @@
                 <td style="background: Coral">{{task.priority}}</td>
                 <td style="background: Coral">{{task.hours}}</td>
                 <td style="background: khaki"class="buttons">
-                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                     <a class="btnEliminar" href="">Eliminar</a>
                 </td>
@@ -24,7 +24,7 @@
                 <td style="background: CornflowerBlue">{{task.priority}}</td>
                 <td style="background: CornflowerBlue">{{task.hours}}</td>
                 <td style="background: khaki" class="buttons">
-                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                     <a class="btnEliminar" href="">Eliminar</a>
                 </td>
@@ -33,7 +33,7 @@
                 <td style="background: Aquamarine">{{task.priority}}</td>
                 <td style="background: Aquamarine">{{task.hours}}</td>
                 <td style="background: khaki" class="buttons">
-                    <a class="btnEditar" href="">Editar</a>
+                    <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                     <a class="btnEliminar" href="">Eliminar</a>
                 </td>
