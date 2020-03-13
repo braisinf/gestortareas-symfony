@@ -18,7 +18,8 @@
             <th>Horas Presupuestadas</th>
             <th>Acciones</th>
         </tr>
-
+    <!--Verificación usuario autentificado para listar tareas-->
+    {% if app.user %}
         <!--Listado tareas según prioridad-->
         {% for task in tasks %}
             <tr>
@@ -52,6 +53,7 @@
             {% endif %}
             </tr>
         {% endfor %}
+    {% endif %}
     </table>
 </div>
 {% endblock %}

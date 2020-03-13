@@ -15,9 +15,10 @@
                 <div id="menu">
                     <ul>
                         <li><a href="{{ path('task') }}">Inicio</a></li>
-                        <li><a href="">Mis Tareas</a></li>
                         <!--Verificación user autenticado-->
                         {% if app.user %}
+                            <li><a href="">Mis Tareas</a></li>
+                            <li><a href="">Crear Tarea</a></li>
                             <li style="float: right"><a href="{{ path('logout') }}">Cerrar Sesión</a></li>
                             <li style="float: right">{{app.user.name}}  {{ app.user.surname }}</li>
                         {% else %}
