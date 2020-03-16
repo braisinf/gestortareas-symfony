@@ -54,9 +54,6 @@ class TaskController extends AbstractController
          return $this->render('task/userTasks.html.twig',[
             'tasks' => $tasks
         ]);
-         
-
-
     }
 
     //@param=id tarea deseada 
@@ -111,8 +108,8 @@ class TaskController extends AbstractController
      * @Route("/task/update/{id}", name="update_task")
      */ 
     public function update(Request $request, Task $task, UserInterface $user){
-        //Verificación existencia Usuario y user propietario tarea 
-        if($user && $user->getId()==$task->getUser()->getId()){
+        //Verificación existencia Usuario y user propietario tarea o user asignado a tarea o role = USER_ADMIN
+        if($user && ($user->getId()==$task->getUser()->getId() or $task->getEmail()==$user->getEmail() or $user->getRole()=="ROLE_ADMIN")){
             //Crear formulario asociado al objeto task, al asociarlo, ya se rellenan los campos del formulario automáticamente
             //Con los valores del objeto $task recibido por parámetro
             $form = $this->createForm(TaskType::class, $task);
@@ -136,6 +133,5 @@ class TaskController extends AbstractController
 			return $this->redirectToRoute('task');
         }
     }
-
     
 }
