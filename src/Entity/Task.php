@@ -159,7 +159,9 @@ class Task
     }
 
 
-    public function setEmail(String $email){
+
+
+    public function setEmail(?String $email){
         $this->email = $email;
     }
 

@@ -19,7 +19,7 @@
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                     <!--Verificación user creador tarea o email asignado a tarea o user role=ROLE_ADMIN-->
                      {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
-                    <a class="btnEliminar" href="">Eliminar</a>
+                    <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>
             {% elseif task.priority == "media" %}
@@ -31,7 +31,7 @@
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                      <!--Verificación user creador tarea o email asignado a tarea-->
                     {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
-                    <a class="btnEliminar" href="">Eliminar</a>
+                    <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>
             {% elseif task.priority == "baja" %}
@@ -43,7 +43,7 @@
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                      <!--Verificación user creador tarea o email asignado a tarea-->
                     {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
-                    <a class="btnEliminar" href="">Eliminar</a>
+                    <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>
             {% endif %}

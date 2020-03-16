@@ -133,5 +133,25 @@ class TaskController extends AbstractController
 			return $this->redirectToRoute('task');
         }
     }
+
+    /**
+       * @param=Tarea, Objeto user autenticado
+     * @Route("/task/delete/{id}", name="delete_task")
+     */ 
+    public function delete(Task $task, UserInterface $user){
+        //Verificación existencia Tarea Y Usuario y user propietario tarea o user asignado a tarea o role = USER_ADMIN
+        if($task && $user && ($user->getId()==$task->getUser()->getId() or $task->getEmail()==$user->getEmail() or $user->getRole()=="ROLE_ADMIN")){
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($task);        
+            $em->flush();
+        }else{
+            // Redirección a task index
+			return $this->redirectToRoute('task');
+        }
+
+         // Redirección a task index
+			return $this->redirectToRoute('task');
+
+    }
     
 }

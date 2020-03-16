@@ -28,7 +28,8 @@ class TaskType extends AbstractType{
 			)
 		))
 		->add('email', EmailType::class, array(
-			'label' => 'Correo electrónico usuario responsable tarea'
+			'label' => 'Correo electrónico usuario responsable tarea',
+			'required'   => false
 		))
 		->add('hours', TextType::class, array(
 			'label' => 'Horas Presupuestadas'
