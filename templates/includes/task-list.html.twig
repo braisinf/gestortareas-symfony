@@ -15,6 +15,10 @@
                 <td style="background: Coral">{{task.priority}}</td>
                 <td style="background: Coral">{{task.hours}}</td>
                 <td style="background: khaki"class="buttons">
+                    <!--Verificación tarea sin asignar-->
+                     {% if (task.email == null)  %}
+                        <a class="btnCoger" href="{{ path('update_email_task',{'id':task.id}) }}">Asignarme</a>
+                    {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                     <!--Verificación user creador tarea o email asignado a tarea o user role=ROLE_ADMIN-->
@@ -27,6 +31,10 @@
                 <td style="background: CornflowerBlue">{{task.priority}}</td>
                 <td style="background: CornflowerBlue">{{task.hours}}</td>
                 <td style="background: khaki" class="buttons">
+                     <!--Verificación tarea sin asignar-->
+                     {% if (task.email == null)  %}
+                        <a class="btnCoger" href="{{ path('update_email_task',{'id':task.id}) }}">Asignarme</a>
+                    {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                      <!--Verificación user creador tarea o email asignado a tarea-->
@@ -39,6 +47,10 @@
                 <td style="background: Aquamarine">{{task.priority}}</td>
                 <td style="background: Aquamarine">{{task.hours}}</td>
                 <td style="background: khaki" class="buttons">
+                 <!--Verificación tarea sin asignar-->
+                     {% if (task.email == null)  %}
+                        <a class="btnCoger" href="{{ path('update_email_task',{'id':task.id}) }}">Asignarme</a>
+                    {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
                      <!--Verificación user creador tarea o email asignado a tarea-->

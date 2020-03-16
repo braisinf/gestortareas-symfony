@@ -153,5 +153,32 @@ class TaskController extends AbstractController
 			return $this->redirectToRoute('task');
 
     }
+
+
+    /**
+       * @param=Tarea, user autenticado
+       * @return=View Index
+     * @Route("/task/update_email/{id}", name="update_email_task")
+     */ 
+    public function updateEmail(Task $task, UserInterface $user){
+           //Verificación existencia Tarea Y Usuario 
+            if($task && $user){
+                //Asignar email del usuario a la tarea
+                $task->setEmail($user->getEmail());
+                var_dump($task);
+                //Guardar tarea
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($task);
+                $em->flush();
+                // Redirección a detalle tarea modificada
+                return $this->redirect($this->generateUrl('detail',['id'=>$task->getId()]));
+            }else{
+                // Redirección a task index
+                return $this->redirectToRoute('task');
+            }
+
+         // Redirección a task index
+			return $this->redirectToRoute('task');
+    }
     
 }

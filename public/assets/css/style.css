@@ -90,7 +90,7 @@ table td{
 .buttons a{
     font-size: large;
     text-decoration: none;
-    padding: 2px;
+    padding: 3px;
 }
 
 .btnEliminar{
@@ -103,4 +103,8 @@ table td{
 
 .btnEditar{
     background: Aquamarine;
+}
+
+.btnCoger{
+    background: lawngreen;
 }
