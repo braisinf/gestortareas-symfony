@@ -21,8 +21,8 @@
                     {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
-                    <!--Verificación user creador tarea o email asignado a tarea o user role=ROLE_ADMIN-->
-                     {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
+                    <!--Verificación email autenticado = asignado a tarea o user role=ROLE_ADMIN-->
+                     {% if ((task.email == app.user.email) or (app.user.role == "ROLE_ADMIN")) %}
                     <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>
@@ -37,8 +37,8 @@
                     {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
-                     <!--Verificación user creador tarea o email asignado a tarea-->
-                    {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
+                     <!--Verificación email autenticado = asignado a tarea o user role=ROLE_ADMIN-->
+                     {% if ((task.email == app.user.email) or (app.user.role == "ROLE_ADMIN")) %}
                     <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>
@@ -53,8 +53,8 @@
                     {% endif %}
                     <a class="btnEditar" href="{{path('update_task',{'id':task.id})}}">Editar</a>
                     <a class="btnVer" href="{{ path('detail',{'id':task.id}) }}">Ver</a>
-                     <!--Verificación user creador tarea o email asignado a tarea-->
-                    {% if (task.user.id == app.user.id) or (task.email == app.user.email) or (app.user.role == "ROLE_ADMIN") %}
+                     <!--Verificación email autenticado = asignado a tarea o user role=ROLE_ADMIN-->
+                     {% if ((task.email == app.user.email) or (app.user.role == "ROLE_ADMIN")) %}
                     <a class="btnEliminar" href="{{ path('delete_task',{'id':task.id}) }}">Eliminar</a>
                     {% endif %}
                 </td>

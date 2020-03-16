@@ -165,7 +165,6 @@ class TaskController extends AbstractController
             if($task && $user){
                 //Asignar email del usuario a la tarea
                 $task->setEmail($user->getEmail());
-                var_dump($task);
                 //Guardar tarea
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($task);
