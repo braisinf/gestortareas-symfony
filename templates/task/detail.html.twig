@@ -17,8 +17,11 @@
         <h2>{{task.title}}</h2>
         <h5>{{task.email}}</h5>
         <h5>Estimación: {{task.hours}} horas</h5>
-        <h3>Descripción</h3>
-        <p>{{task.content}}</p>
+        <!--Verificación Descripción Vacía-->
+        {% if task.content != null %}
+            <h3>Descripción</h3>
+            <p>{{task.content}}</p>
+        {% endif %}
         <p class"data-task">
             {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
         </p>
@@ -28,8 +31,11 @@
            <h2>{{task.title}}</h2>
         <h5>{{task.email}}</h5>
         <h5>Estimación: {{task.hours}} horas</h5>
-        <h3>Descripción</h3>
-        <p>{{task.content}}</p>
+         <!--Verificación Descripción Vacía-->
+        {% if task.content != null %}
+            <h3>Descripción</h3>
+            <p>{{task.content}}</p>
+        {% endif %}
         <p class"data-task">
             {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
         </p>
@@ -39,8 +45,11 @@
             <h2>{{task.title}}</h2>
         <h5>{{task.email}}</h5>
         <h5>Estimación: {{task.hours}} horas</h5>
-        <h3>Descripción</h3>
-        <p>{{task.content}}</p>
+         <!--Verificación Descripción Vacía-->
+        {% if task.content != null %}
+            <h3>Descripción</h3>
+            <p>{{task.content}}</p>
+        {% endif %}
         <p class"data-task">
             {{task.user.name}} {{task.user.surname}} {{task.createdAt|date('d/m/Y h:i:s')}}
         </p>
