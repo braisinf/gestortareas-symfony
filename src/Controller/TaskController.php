@@ -44,7 +44,7 @@ class TaskController extends AbstractController
         $db = $em->getConnection();
         //Consulta
         $email=$user->getEmail();
-        $query = "SELECT * FROM tasks WHERE email='".$email."';";
+        $query = "SELECT * FROM tasks WHERE email='".$email."'Order By id desc;";
         $stmt = $db->prepare($query);
         $params = array();
         $stmt->execute($params);
