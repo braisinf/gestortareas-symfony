@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 //Clase crear tarea-->Estructura formulario
 class TaskType extends AbstractType{
@@ -25,6 +26,9 @@ class TaskType extends AbstractType{
 				'media' => 'media',
 				'baja' => 'baja',
 			)
+		))
+		->add('email', EmailType::class, array(
+			'label' => 'Correo electrónico usuario responsable tarea'
 		))
 		->add('hours', TextType::class, array(
 			'label' => 'Horas Presupuestadas'

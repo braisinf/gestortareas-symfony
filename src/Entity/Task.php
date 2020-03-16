@@ -23,6 +23,13 @@ class Task
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="email", type="string", nullable=true)
+     */
+    private $email;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
@@ -149,6 +156,15 @@ class Task
         $this->user = $user;
 
         return $this;
+    }
+
+
+    public function setEmail(String $email){
+        $this->email = $email;
+    }
+
+    public function getEmail(){
+        return $this->email;
     }
 
 

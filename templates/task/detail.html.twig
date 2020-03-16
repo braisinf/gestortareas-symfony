@@ -15,7 +15,8 @@
 {% if task.priority == "alta" %}
     <div style="background:Coral">
         <h2>{{task.title}}</h2>
-        <h3>{{task.hours}} horas</h3>
+        <h5>{{task.email}}</h5>
+        <h5>Estimación: {{task.hours}} horas</h5>
         <h3>Descripción</h3>
         <p>{{task.content}}</p>
         <p class"data-task">
@@ -24,8 +25,9 @@
     </div>
 {% elseif task.priority == "media" %}
     <div style="background:CornFlowerBlue">
-        <h2>{{task.title}}</h2>
-        <h3>{{task.hours}} horas</h3>
+           <h2>{{task.title}}</h2>
+        <h5>{{task.email}}</h5>
+        <h5>Estimación: {{task.hours}} horas</h5>
         <h3>Descripción</h3>
         <p>{{task.content}}</p>
         <p class"data-task">
@@ -34,8 +36,9 @@
     </div>
 {% elseif task.priority == "baja" %}
     <div style="background:Aquamarine">
-        <h2>{{task.title}}</h2>
-        <h3>{{task.hours}} horas</h3>
+            <h2>{{task.title}}</h2>
+        <h5>{{task.email}}</h5>
+        <h5>Estimación: {{task.hours}} horas</h5>
         <h3>Descripción</h3>
         <p>{{task.content}}</p>
         <p class"data-task">

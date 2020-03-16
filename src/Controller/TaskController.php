@@ -7,8 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Task;
 use App\Forms\TaskType;
-use App\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 
 class TaskController extends AbstractController
 {
@@ -38,8 +38,19 @@ class TaskController extends AbstractController
      * @Route("/user/tasks/{id}", name="user_tasks")
      */ 
     public function getUserTasks(UserInterface $user){
-        //Guardar todos las tareas del usuario en array de objetos tasks  
-         $tasks=$user->getTasks();
+        //Guardar todos las tareas asignadas al usuario en array de objetos tasks  
+        //Conexión
+        $em = $this->getDoctrine()->getManager();
+        $db = $em->getConnection();
+        //Consulta
+        $email=$user->getEmail();
+        $query = "SELECT * FROM tasks WHERE email='".$email."';";
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $tasks=$stmt->fetchAll();
+
+         //$tasks=
          return $this->render('task/userTasks.html.twig',[
             'tasks' => $tasks
         ]);
@@ -47,6 +58,7 @@ class TaskController extends AbstractController
 
 
     }
+
     //@param=id tarea deseada 
     //@return=View User Task
     /**
@@ -78,15 +90,14 @@ class TaskController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $task->setCreatedAt(new \DateTime('now'));
             $task->setUser($user);
+            $task->setEmail($task->getEmail());
             //Guardar tarea
             $em = $this->getDoctrine()->getManager();
 			$em->persist($task);
             $em->flush();
-
             // Redirección a task index
             return $this->redirect($this->generateUrl('detail',['id'=>$task->getId()]));
         }
-
         return $this->render('task/create&edit_task.html.twig',[
             'edit' => false,
             'form' => $form->createView()
